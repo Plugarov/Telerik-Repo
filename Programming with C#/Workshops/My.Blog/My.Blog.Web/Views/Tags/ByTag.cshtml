@@ -1,0 +1,109 @@
+﻿@using My.Blog.Web.Models.Home
+@model HomePaginationModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@if (!Model.Model.Any())
+{
+    <p>No Posts!</p>
+}
+else
+{
+    foreach (var item in Model.Model)
+    {
+        <img class="card-img-top" src="@Url.Content(string.Format("~/img/PostsImages/{0}", item.PostImageName))" alt="Card image cap" />
+
+        <h3 class="card-title">@item.Title</h3>
+        <span class="meta-details">@Resources.GlobalResources.By @item.UserName @Resources.GlobalResources.PostedOn @item.CreatedOn</span>
+        <hr />
+        <div id="navcontainer">
+            <ul>
+                @{
+                    foreach (var tag in item.Tags)
+                    {
+                        <li>@Html.ActionLink(tag.Name, "bytag", "posts", new { id = @tag.Id }, null)</li>
+                    }
+                }
+            </ul>
+        </div>
+        <hr />
+        <p class="card-text">@item.Content</p>
+        <a href="@item.Url" class="btn btn-primary">@Resources.GlobalResources.ReadMore &rarr;</a>
+
+        <hr />
+    }
+}
+
+<div class="btn-group">
+    @{
+        if (Model.CurrentPage <= 1)
+        {
+            <span class="btn btn-primary" disabled="disabled"><<</span>
+            <span class="btn btn-primary" disabled="disabled"><</span>
+        }
+        else
+        {
+            @Html.ActionLink("<<", "bytag", new { id = ViewData["TagId"], pageId = 1 }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("<", "bytag", new { id = ViewData["TagId"], pageId = Model.CurrentPage - 1 }, new { @class = "btn btn-primary" })
+        }
+    }
+
+    @{
+        int startPage = 1;
+        int endPage = Model.AllPages;
+
+        if (Model.AllPages > 10)
+        {
+            if (Model.CurrentPage > 5)
+            {
+                startPage = Model.CurrentPage - 5;
+            }
+
+            if (Model.CurrentPage + 5 < Model.AllPages)
+            {
+                endPage = Model.CurrentPage + 5;
+            }
+        }
+    }
+
+    @{
+        if (Model.CurrentPage - 5 > 1)
+        {
+            <span class="btn btn-primary" disabled="disabled">...</span>
+        }
+    }
+
+    @for (int pageIndex = startPage; pageIndex <= endPage; pageIndex++)
+    {
+        if (pageIndex != Model.CurrentPage)
+        {
+            @Html.ActionLink(pageIndex.ToString(), "bytag", new { controller = "posts", area = string.Empty, id = ViewData["TagId"], pageId = pageIndex }, new { @class = "btn btn-primary" })
+        }
+        else
+        {
+            <span class="btn btn-primary" disabled="disabled">@pageIndex</span>
+        }
+    }
+
+    @{
+        if (Model.CurrentPage + 5 < Model.AllPages)
+        {
+            <span class="btn btn-primary" disabled="disabled">...</span>
+        }
+    }
+
+    @{
+        if (Model.CurrentPage >= Model.AllPages)
+        {
+            <span class="btn btn-primary" disabled="disabled">></span>
+            <span class="btn btn-primary" disabled="disabled">>></span>
+        }
+        else
+        {
+            @Html.ActionLink(">", "bytag", new { id = ViewData["TagId"], pageId = Model.CurrentPage + 1 }, new { @class = "btn btn-primary" })
+            @Html.ActionLink(">>", "bytag", new { id = ViewData["TagId"], pageId = Model.AllPages }, new { @class = "btn btn-primary" })
+        }
+    }
+</div>

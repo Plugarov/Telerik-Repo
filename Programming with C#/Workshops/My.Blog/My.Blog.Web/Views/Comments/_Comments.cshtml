@@ -1,0 +1,36 @@
+﻿@using My.Blog.Web.Models.Comments
+
+@model int
+
+<section class="hidden new-comment">
+    <hr />
+    <h3>Comments</h3>
+</section>
+
+<div id="Comments"></div>
+
+@{
+    var CommentsPartialViewsFolder = "~/Views/Comments/{0}.cshtml";
+}
+
+@Ajax.ActionLink(
+                    "Show Comments",
+                    "All",
+                    "Comments",
+                    new { id = Model },
+                    new AjaxOptions
+                    {
+                        HttpMethod = "GET",
+                        OnSuccess = "hideViewCommentsButton",
+                        InsertionMode = InsertionMode.Replace,
+                        UpdateTargetId = "Comments",
+                    },
+                    new { @class = "btn btn-primary btn-u", id = "show-comments-btn" }
+                    )
+
+
+<section class="hidden new-comment">
+    @Html.Partial(string.Format(string.Format(CommentsPartialViewsFolder, "_CreateComment")),
+                         new PostCommentAnnotationViewModel(),
+                         new ViewDataDictionary { { "id", Model } })
+</section>

@@ -1,0 +1,30 @@
+﻿@model My.Blog.Web.Models.Comments.PostCommentAnnotationViewModel
+
+<h3>Leave a Comment</h3>
+
+@if (User.Identity.IsAuthenticated)
+{
+    using (Html.BeginForm("AddNew", "Comments", new { PostId = ViewData["id"] }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            @Html.TextAreaFor(m => m.Content, 6, 6, new { @class = "form-control", style = "width: 100%; max-width: 100%;" })
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-default" value="Post" />
+        </div>
+    }
+}
+else
+{
+    <p>Only registered users can comment!</p>
+}
+
+<script>
+    function hideViewCommentsButton() {
+        $('#show-comments-btn').hide();
+        $('.new-comment').removeClass('hidden');
+    }
+</script>
+

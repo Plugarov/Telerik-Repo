@@ -1,0 +1,49 @@
+﻿@model My.Blog.Web.Models.Comments.PostCommentViewModel
+
+@{
+    ViewBag.Title = Resources.GlobalResources.Comments;
+}
+
+@if (Model.Comments.Any())
+{
+    <h2>@Resources.GlobalResources.CommentsFor "@Model.Comments.First().PostTitle"</h2>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>@Resources.GlobalResources.Id</th>
+                <th>@Resources.GlobalResources.Content</th>
+                <th>@Resources.GlobalResources.CreatedOn</th>
+                <th>@Resources.GlobalResources.IsDeleted</th>
+                <th>@Resources.GlobalResources.Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in @Model.Comments)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Content</td>
+                    <td>@item.CreatedOn</td>
+                    <td>
+                        @if (item.IsDeleted)
+                        {
+                            @Html.ActionLink(@Resources.GlobalResources.Recover, "Recover", "Comments", new { id = item.Id, postId = item.PostId }, null)
+                        }
+                        else
+                        {
+                            @Html.ActionLink(@Resources.GlobalResources.Delete, "Delete", "Comments", new { id = item.Id, postId = item.PostId }, null)
+                        }
+                    </td>
+                    <td>
+                        @Html.ActionLink(@Resources.GlobalResources.Edit, "Edit", "Comments", new { id = item.Id }, null)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No comments yet!</p>
+}

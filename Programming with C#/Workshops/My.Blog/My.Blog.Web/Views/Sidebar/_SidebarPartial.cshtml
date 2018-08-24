@@ -1,0 +1,31 @@
+﻿@model My.Blog.Web.Models.Sidebar.SidebarViewModel
+<div class="row">
+    <div class="col-12">
+        <h5>@Resources.GlobalResources.RecentPosts</h5>
+        <ul class="recent-posts">
+            @foreach (var item in Model.RecentPosts)
+            {
+                <li>@item.Title</li>
+
+            }
+        </ul>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-12">
+        <h5>@Resources.GlobalResources.Tags</h5>
+        <div id="navcontainer">
+            <ul>
+                @{
+                    foreach (var item in Model.Tags)
+                    {
+                        <li><a href="~/Tags/@item.Id">@item.Name</a></li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,40 @@
+﻿@using My.Blog.Web.Models.Pages
+@model CreatePageViewModel
+
+@{
+    ViewBag.Title = Resources.GlobalResources.CreatePage;
+}
+
+<script src="@Url.Content("~/Scripts/tinymce/tinymce.min.js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+    tinyMCE.init({
+        selector: "#Content",
+    });
+</script>
+
+@using (Html.BeginForm("Create", "Pages", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <h4>@Resources.GlobalResources.CreatePost</h4>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Title, new { @class = "col-md-2 control-label" })
+        <div class="col-md-12">
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control", style = "width: 100%; max-width: 100%;" })
+            @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Content, new { @class = "col-md-2 control-label" })
+        <div class="col-md-12">
+            @Html.TextAreaFor(m => m.Content, 10, 10, new { @class = "form-control", style = "width: 100%; max-width: 100%;" })
+            @Html.ValidationMessageFor(m => m.Content, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12">
+            <input type="submit" class="btn btn-default" value=@Resources.GlobalResources.AddPost />
+        </div>
+    </div>
+}

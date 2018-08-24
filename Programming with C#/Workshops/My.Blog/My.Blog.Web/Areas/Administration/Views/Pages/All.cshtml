@@ -1,0 +1,50 @@
+﻿@model My.Blog.Web.Models.Pages.PageViewModel
+
+@{
+    ViewBag.Title = Resources.GlobalResources.Posts;
+}
+
+<h1>@Resources.GlobalResources.Posts</h1>
+
+@if (!Model.Pages.Any())
+{
+    <p>No posts yet!</p>
+}
+else
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>@Resources.GlobalResources.Id</th>
+                <th>@Resources.GlobalResources.Name</th>
+                <th>@Resources.GlobalResources.CreatedOn</th>
+                <th>@Resources.GlobalResources.IsDeleted</th>
+                <th>@Resources.GlobalResources.Post</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in @Model.Pages)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td> <a href="/pages/@item.Title">@item.Title</a></td>
+                    <td>@item.CreatedOn</td>
+                    <td>
+                        @if (item.IsDeleted)
+                        {
+                            @Html.ActionLink(@Resources.GlobalResources.Recover, "Recover", "Pages", new { id = item.Id }, null)
+                        }
+                        else
+                        {
+                            @Html.ActionLink(@Resources.GlobalResources.Delete, "Delete", "Pages", new { id = item.Id }, null)
+                        }
+                    </td>
+                    <td>
+                        @Html.ActionLink(@Resources.GlobalResources.Edit, "Edit", "Pages", new { id = item.Id }, null)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

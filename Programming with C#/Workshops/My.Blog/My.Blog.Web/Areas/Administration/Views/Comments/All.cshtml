@@ -1,0 +1,121 @@
+﻿@model My.Blog.Web.Models.Comments.PostCommentPaginationModel
+
+@{
+    ViewBag.Title = Resources.GlobalResources.Comments;
+}
+
+<h1>@Resources.GlobalResources.Comments</h1>
+
+@if (!Model.Model.Any())
+{
+    <p>No comments, yet!</p>
+}
+else
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>@Resources.GlobalResources.Post</th>
+                <th>@Resources.GlobalResources.Content</th>
+                <th>@Resources.GlobalResources.CreatedOn</th>
+                <th>@Resources.GlobalResources.IsDeleted</th>
+                <th>@Resources.GlobalResources.Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in @Model.Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(item.PostTitle, "Post", "Blog", new { id = item.PostId, @Area = string.Empty }, new { })</td>
+                    <td>@item.Content</td>
+                    <td>@item.CreatedOn</td>
+                    <td>
+                        @if (item.IsDeleted)
+                        {
+                            @Html.ActionLink(@Resources.GlobalResources.Recover, "Recover", "Comments", new { id = item.Id }, null)
+                        }
+                        else
+                        {
+                            @Html.ActionLink(@Resources.GlobalResources.Delete, "Delete", "Comments", new { id = item.Id }, null)
+                        }
+                    </td>
+                    <td>
+                        @Html.ActionLink(@Resources.GlobalResources.Edit, "Edit", "Comments", new { id = item.Id }, null)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="btn-group">
+        @{
+            if (Model.CurrentPage <= 1)
+            {
+                <span class="btn btn-primary" disabled="disabled"><<</span>
+                <span class="btn btn-primary" disabled="disabled"><</span>
+            }
+            else
+            {
+                @Html.ActionLink("<<", "All", new { id = 1 }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("<", "All", new { id = Model.CurrentPage - 1 }, new { @class = "btn btn-primary" })
+            }
+        }
+
+        @{
+            int startPage = 1;
+            int endPage = Model.AllPages;
+
+            if (Model.AllPages > 10)
+            {
+                if (Model.CurrentPage > 5)
+                {
+                    startPage = Model.CurrentPage - 5;
+                }
+
+                if (Model.CurrentPage + 5 < Model.AllPages)
+                {
+                    endPage = Model.CurrentPage + 5;
+                }
+            }
+        }
+
+        @{
+            if (Model.CurrentPage - 5 > 1)
+            {
+                <span class="btn btn-primary" disabled="disabled">...</span>
+            }
+        }
+
+        @for (int pageIndex = startPage; pageIndex <= endPage; pageIndex++)
+        {
+            if (pageIndex != Model.CurrentPage)
+            {
+                @Html.ActionLink(pageIndex.ToString(), "All", new { controller = "comments", area = "Administration", id = pageIndex }, new { @class = "btn btn-primary" })
+            }
+            else
+            {
+                <span class="btn btn-primary" disabled="disabled">@pageIndex</span>
+            }
+        }
+
+        @{
+            if (Model.CurrentPage + 5 < Model.AllPages)
+            {
+                <span class="btn btn-primary" disabled="disabled">...</span>
+            }
+        }
+
+        @{
+            if (Model.CurrentPage >= Model.AllPages)
+            {
+                <span class="btn btn-primary" disabled="disabled">></span>
+                <span class="btn btn-primary" disabled="disabled">>></span>
+            }
+            else
+            {
+                @Html.ActionLink(">", "All", new { id = Model.CurrentPage + 1 }, new { @class = "btn btn-primary" })
+                @Html.ActionLink(">>", "All", new { id = Model.AllPages }, new { @class = "btn btn-primary" })
+            }
+        }
+    </div>
+}

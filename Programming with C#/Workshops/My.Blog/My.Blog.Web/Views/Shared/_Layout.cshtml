@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="boxed-layout container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            @Html.ActionLink(Resources.GlobalResources.Blog, "Index", "Home", new { Area = string.Empty, id = 1 }, new { @class = "navbar-brand" })
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto"></ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </nav>
+        <div class="container body-content">
+            <div class="row">
+                <div class="col-lg-9">
+                    @RenderBody()
+                </div>
+                <div class="col-lg-3">
+                    @Html.Action("Index", "Sidebar", routeValues: new { area = string.Empty })
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

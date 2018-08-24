@@ -1,0 +1,42 @@
+﻿#navcontainer ul {
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+#navcontainer ul li {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    display: inline-block;
+}
+
+#navcontainer ul li a {
+    text-decoration: none;
+    padding: 2px 15px;
+    color: #fff;
+    background-color: #117a8b;
+}
+
+#navcontainer ul li a:hover {
+    color: #fff;
+    background-color: #23a8be;
+}
+
+.meta-details {
+    font-family: Century Gothic, sans-serif;
+}
+
+img {
+    margin-bottom: 15px;
+}
+
+.recent-posts {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.recent-posts li {
+    font-size: 0.9rem;
+}

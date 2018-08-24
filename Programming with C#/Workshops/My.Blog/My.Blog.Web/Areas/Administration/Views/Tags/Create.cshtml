@@ -1,0 +1,26 @@
+﻿@using My.Blog.Web.Models.Tags
+@model TagAnnotaionViewModel
+
+@{
+    ViewBag.Title = Resources.GlobalResources.CreateTag;
+}
+
+@using (Html.BeginForm("Create", "Tags", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
+        <div class="col-md-12">
+
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", style = "width: 100%; max-width: 100%;" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+
+            <input type="submit" class="btn btn-default" value="Add" />
+        </div>
+    </div>
+}

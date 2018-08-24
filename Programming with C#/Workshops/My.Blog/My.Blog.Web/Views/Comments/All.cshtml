@@ -1,0 +1,17 @@
+﻿@model My.Blog.Web.Models.Comments.PostCommentViewModel
+
+@if (Model.Comments.Count > 0)
+{
+    foreach (var item in Model.Comments)
+    {
+        <hr />
+        <p>Created By @item.UserName</p>
+        <p>Created On @item.CreatedOn</p>
+        <p>@item.Content</p>
+    }
+}
+else
+{
+    <p>No comments yet!</p>
+}
+

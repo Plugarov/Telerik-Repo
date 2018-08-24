@@ -1,0 +1,29 @@
+﻿@using My.Blog.Web.Models.Posts
+
+@model PostAnnotationViewModel
+
+@{
+    const string CommentsPartialViewsFolder = "~/Views/Comments/{0}.cshtml";
+    ViewBag.Title = "Post";
+}
+
+<h1>@Model.Title</h1>
+<p>Author: @Model.UserName</p>
+<hr />
+<div id="navcontainer">
+    <ul>
+        @{
+            foreach (var item in Model.Tags)
+            {
+                <li>@Html.ActionLink(item.Name, "bytag", "posts", new { id = @item.Id }, null)</li>
+            }
+        }
+    </ul>
+</div>
+<p class="card-text">@Html.Raw(Model.Content)</p>
+@Html.Partial(string.Format(CommentsPartialViewsFolder, "_Comments"), Model.Id)
+
+
+
+
+

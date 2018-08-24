@@ -1,0 +1,43 @@
+<div id="messages-container-template" type="text/template">
+  <div class="container">
+    <div class="row messages-container">
+      <div class="col-md-12 messages-content">
+        <div>
+          <h2>{{result.title}}</h2>
+        </div>
+        {{#if result.messages}} {{#each result.messages}}
+        <div class="message-container">
+          <div class="row">
+            <div class="col-md-9 box-middle">
+              <a class="message-creator" href="#">
+                {{#if user.username}}{{user.username}}{{else}}Anonymous{{/if}}
+              </a>
+              <p class="message-content">{{title}}</p>
+            </div>
+            <div class="col-md-2 box-right">
+              <p>
+                <span class="message-date">{{postDate}}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        {{/each}} {{else}}
+        <div class="messages panel-body">
+          <div class="message">
+            <div>
+              <p class="message-content">No messages!</p>
+            </div>
+          </div>
+        </div>
+        {{/if}}
+        <div class="col-md-6">
+          <form id="create-message-form">
+            <textarea class="form-control" id="message-content" rows="4"></textarea>
+            <br>
+            <button id="message-add-new" type="submit" class="btn btn-primary btn-sm">Add message</button>
+            <form>
+        </div>
+      </div>
+    </div>
+    </d iv>
+  </div>

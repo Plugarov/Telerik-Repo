@@ -1,0 +1,98 @@
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+
+    <style>
+        .button {
+            background-color: lightblue;
+            display: inline-block;
+            padding: 0 10px 0 10px;
+            border-radius: 5px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul class="list">
+
+    </ul>
+
+    <div>
+        <div class="button">
+            <p class="content">Content 1</p>
+        </div>
+        <div class="button">
+            <p class="content">Content 2</p>
+        </div>
+        <div class="button">
+            <p class="content">Content 3</p>
+        </div>
+        <div class="button">
+            <p class="content">Content 4</p>
+        </div>
+        <div class="button">
+            <p class="content">Content 5</p>
+        </div>
+    </div>
+
+    <script>
+        "use strict"
+        //##Task 1 Create a function that takes a selector and COUNT, then generates inside a UL with COUNT LIs:
+
+        $(function () {
+            function listGenerator(selector, count) {
+                isValidNumber(count);
+
+                var list = $(selector);
+                for (var i = 0; i < count; i++) {
+                    var listItem = $("<li/>")
+                        .addClass("list-item")
+                        .text("List item " + i)
+                        .appendTo(list);
+                }
+                return list;
+            };
+
+            function isValidNumber(num) {
+                if (num < 1) {
+                    throw new Error("Less than 1");
+                }
+
+                if (isNaN(parseFloat(num)) && !isFinite(num) || typeof num == 'object') {
+                    throw new Error("Not a number");
+                }
+            }
+
+            var list = listGenerator(".list", "5");
+
+            list.appendTo("body");
+
+            //##Task 2 Create a function that takes a selector and:
+            //TODO 
+            //https://github.com/TelerikAcademy/JavaScript-UI-and-DOM/blob/master/Topics/08.%20jQuery%20Overview/homework/README.md
+            //Find the topmost .content element, that is before another .button and: 
+
+            function toggleButtons(button, content) {
+                var $button = $(button).first().children().hasClass("content"),
+                    $content = $(button).first().next().hasClass("button");
+
+                $(button).on('click', function () {
+                    if ($button && $content) {
+                       
+                    }
+                });
+            }
+
+            toggleButtons(".button", ".content");
+
+        });
+    </script>
+</body>
+
+</html>

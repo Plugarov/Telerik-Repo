@@ -1,0 +1,86 @@
+<div id="threads-container-template" type="text/template">
+<<<<<<< HEAD
+    <div id="container-thraeds" class="col-md-12  ">
+        <div class="panel panel-default">
+            <h1 class="panel-title">{{title}}</h1>
+            <div id="threads" class="panel-body">
+                {{#if result}}
+                  {{#each result}}
+                  <div id="thread-template" type="text/template">
+                      <div class="thread">
+                          <div>
+                              <h3>
+                                  <a class="thread-title" href="#threads/{{id}}">{{title}}</a>
+                              </h3>
+                          </div>
+                          <div>
+                              <p>
+                                  <span> <a class="thread-creator" href="#"><strong>{{user.username}}</strong></a>
+                                    opened this issue on <span class="thread-date">{{postDate}}</span> 10 comments
+                              </p>
+                          </div>
+                      </div>
+                    </div>
+                  {{/each}}
+                {{else}}
+                  <div class="thread">
+                      <div>
+                          <h3>
+                              <a class="thread-title" href="#threads/{{id}}">{{title}}</a>
+                          </h3>
+                      </div>
+                      <div>
+                          <p> No threads yet!</p>
+                      </div>
+                  </div>
+                {{/if}}
+=======
+    <div id="container-thraeds" class="col-xs-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Threads</h3>
+            </div>
+            <div id="threads" class="panel-body">
+                {{#each result}}
+                <div id="thread-template" type="text/template">
+                    <div class="thread">
+                        <div>
+                            <h3>
+                                <a class="thread-title" href="#threads/{{id}}">{{title}}</a>
+                            </h3>
+                        </div>
+                        <div>
+                            <p>
+                                <span>Created on</span>
+                                <span class="thread-date">{{postDate}}</span>
+                                by
+                                <a class="thread-creator" href="#">{{#if username}}{{username}}{{else}}Anonymous{{/if}}</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+>>>>>>> e6625f2bb98f445568025b0d45f48912a6baa280
+                <div id="thread-new-template" type="text/template">
+                    <form class="navbar-form navbar-left" role="search">
+                        <h4>Create new Thread:</h4>
+                        <div class="input-group">
+                            <input id="input-add-thread" class="thread-title form-control" placeholder="Thread Title" />
+                            <span class="input-group-btn">
+<<<<<<< HEAD
+                                <button type="submit" class="btn btn-success">Add</button>
+=======
+                                <button id="btn-add-thread" class="btn btn-success" type="submit">Add</button>
+>>>>>>> e6625f2bb98f445568025b0d45f48912a6baa280
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<<<<<<< HEAD
+</div>
+=======
+</div>
+>>>>>>> e6625f2bb98f445568025b0d45f48912a6baa280

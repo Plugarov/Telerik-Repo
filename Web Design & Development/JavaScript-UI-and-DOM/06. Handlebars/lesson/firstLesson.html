@@ -1,0 +1,34 @@
+<html>
+        
+        <head>
+        </head>
+        
+        <body>
+        
+            <div id="hb-container">
+        
+            </div>
+        
+            <script src="node_modules/handlebars/dist/handlebars.js"></script>
+            <script>
+                // {{{ }}} Escapes scripts in template.
+        
+                var hbTemplate = `
+                <h1>{{greeting}}</h1>
+                <p>{{message}}</p>
+                `;
+        
+                var template = Handlebars.compile(hbTemplate);
+        
+                var data = {
+                    message: "Welcome to handlebars!",
+                    greeting: "Hello",
+                }
+        
+                var container = document.getElementById('hb-container');
+        
+                container.innerHTML = template(data);
+            </script>
+        </body>
+        
+        </html>

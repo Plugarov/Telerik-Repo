@@ -1,0 +1,28 @@
+<div id="footer-container-template" type="text/template">
+  <div class="container">
+    <div class="row footer-container">
+      <div class="col-md-6 footer-threads">
+        <h4>Last threads</h4>
+        <ul>
+          {{#each threads.result}}
+          <li>
+            <p>{{postDate}}</p>
+            <a href="#threads/{{id}}">{{title}}</a>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+      <div class="col-md-6 footer-messages">
+        <h4>Last Messages</h4>
+        <ul>
+        {{#each messages.result}}
+            <li>
+              <p>{{postDate}}</p>
+              <a href="#threads/{{id}}">{{title}}</a>
+            </li>
+        {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

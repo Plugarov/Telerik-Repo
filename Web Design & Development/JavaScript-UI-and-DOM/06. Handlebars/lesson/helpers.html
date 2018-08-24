@@ -1,0 +1,67 @@
+<html>
+
+<head>
+</head>
+
+<body>
+
+    <div id="hb-container">
+
+    </div>
+
+    <script src="node_modules/handlebars/dist/handlebars.js"></script>
+    <script>
+        // HELPERS
+
+        var hbTemplate = `
+                {{#if student.length}}
+                    <ul>
+                        {{#student}}
+                            <li>{{#displayPerson this}}{{/displayPerson}}</li>
+                        {{/student}}
+                    </ul>
+                {{/if}}
+                `;
+        var template = Handlebars.compile(hbTemplate);
+
+        Handlebars.registerHelper('displayPerson', function (person) {
+            var result = `${person.name} is ${person.age}-years-old`;
+            return new Handlebars.SafeString(result);
+            //Escaping
+            //Handlebars.Utilis.escapeExpression(result);
+        });
+
+        // Counter
+        // <td>{{ counter @index}}</td>
+        // Handlebars.registerHelper("counter", function (index) {
+        //     return index + 1;
+        // });
+
+        Handlebars.registerHelper('equals', function () {
+
+        });
+
+        var data = {
+            thisYear: {
+                school: {
+                    obj: {
+                        value: 52,
+                        name: 'Penka',
+                        conlor: 'red',
+                    }
+                }
+            },
+            student: [
+                { name: 'Ivan', age: 51 },
+                { name: 'Gosho', age: 45 },
+                { name: 'Petar', age: 435 }
+            ]
+        }
+
+        var container = document.getElementById('hb-container');
+
+        container.innerHTML = template(data);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<html>
+
+<head>
+</head>
+
+<body>
+
+    <div id="hb-container">
+
+    </div>
+
+    <script src="node_modules/handlebars/dist/handlebars.js"></script>
+    <script>
+        // {{{ }}} Escapes scripts in template.
+
+        var hbTemplate = `
+        {{!-- {{Use conditional statements.}} --}}
+        {{#if student.length}}
+            <p>First student is {{student.[0].name}}.</p>
+            <ul>
+                {{#student}}
+                    {{!-- {{Use indexies and values.}} --}}
+                    <li>{{@index}} - {{name}} is {{age}} years old.</li>
+                {{/student}}
+            </ul>
+        {{else}}
+            <p>No students!<p>
+        {{/if}}
+
+        {{!-- {{Use 'with' to shortcut contents names.}} --}}
+        {{#with thisYear.school}}
+            {{#if obj}}
+                {{!-- {{Use 'each' as foreach.}} --}}
+                {{#each obj}}
+                    {{@index}} - {{@key}} - {{this}}<br/> 
+                {{/each}}
+            {{/if}}
+        {{/with}}
+        `;
+
+        // Can change it with else.
+        // {{#unless student.length}}
+        //     <p>No students!<p>
+        // {{/unless}}
+
+        var template = Handlebars.compile(hbTemplate);
+
+        var data = {
+            thisYear: {
+                school: {
+                    obj: {
+                        value: 52,
+                        name: 'Penka',
+                        conlor: 'red',
+                    }
+                }
+            },
+            student: [
+                { name: 'Ivan', age: 51 },
+                { name: 'Gosho', age: 45 },
+                { name: 'Petar', age: 435 }
+            ]
+        }
+
+        var container = document.getElementById('hb-container');
+
+        container.innerHTML = template(data);
+    </script>
+</body>
+
+</html>

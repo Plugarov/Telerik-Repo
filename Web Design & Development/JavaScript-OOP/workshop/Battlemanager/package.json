@@ -1,0 +1,12 @@
+{
+  "name": "battlemanager-tests",
+  "version": "1.0.0",
+  "main": "test-1.js",
+  "scripts": {
+    "test": "echo mocha -R spec tests. Amir"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^3.5.3"
+  }
+}

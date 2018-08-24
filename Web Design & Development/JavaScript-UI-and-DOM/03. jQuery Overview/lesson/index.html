@@ -1,0 +1,266 @@
+<html>
+
+<head>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="script.js"></script>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#" class="btn">button</a>
+    <div id="root">
+        <h4>
+            works
+        </h4>
+    </div>
+
+    <div>
+        <ul>
+            <a href="#" class="btn"></a>
+            <li>Content 1</li>
+            <li>Content 2</li>
+            <li>Content 3</li>
+        </ul>
+    </div>
+
+    <p> in one click - ul.list>.list-item*5>a.btn </p>
+    <ul class="list">
+        <li class="list-item"><a href="#" class="btn">X</a>Some text1</li>
+        <li class="list-item"><a href="#" class="btn">X</a>Some text2</li>
+        <li class="list-item"><a href="#" class="btn">X</a>Some text5</li>
+    </ul>
+
+    <input type="text">
+    <a href="#" class="enter-name">Enter name</a>
+    <ul class="name-list"> </ul>
+    <input type="text" class="search-input">
+    <a href="#" class="search-button">Enter search</a>
+
+
+</body>
+
+<script>
+
+    // - - - - - - - - - - - - - - - - - - - - 
+    // AJAX
+
+
+
+    // - - - - - - - - - - - - - - - - - - - - 
+    // THere is no document fragment, but we can improvise
+
+    // var $fragment = $("<div/>");
+    // //...
+    // $(document.body).html($fragment.html());
+
+    // or like 
+    // $(".name-list").on("click", ".delete-button", function () {
+
+    // - - - - - - - - - - - - - - - - - - - - 
+    // Add, remove, search
+
+    // var $btn = $(".enter-name"),
+    //     $input = $("input"),
+    //     $list = $(".name-list");
+
+    // var $searchBtn = $(".search-button"),
+    //     $searchInput = $(".search-input");
+
+    // $btn.on('click', function () {
+    //     var text = $input.val();
+    //     $input.val("");
+
+    //     $li = $("<li/>").html(text).addClass("search-list-item");
+
+    //     btnDelete = $("<a/>")
+    //         .addClass("delete-button")
+    //         .html(" X")
+    //         .appendTo($li);
+
+    //     $list.append($li);
+
+    // });
+
+    // // LIKE TARGET IN VANILLA, SETTING FUNTION ON PARENT TO USE ON CHILDREN
+    // $(".name-list").on("click", ".delete-button", function () {
+    //     $(this).parents(".search-list-item")
+    //         .remove();
+    // });
+
+    // // expert way
+    // $(".search-input").on('input', function () {
+    //     var $items = $(".name-list .search-list-item"),
+    //         pattern = $(this).val();
+
+    //     $items.each(function (index, node) {
+    //         var $node = $(node);
+    //         if ($node.text().indexOf(pattern) < 0) {
+    //             $node.addClass("hidden");
+    //         } else {
+    //             $node.removeClass("hidden");
+    //         }
+    //     });
+    // });
+
+    // my way
+    // $searchBtn.on("click", function () {
+    //     var $searchListElement = $(".search-list-item");
+    //     var $searchString = $searchInput.val();
+    //     var len = $searchListElement.length;
+
+    //     for (var i = 0; i < len; i++) {
+    //         if ($searchListElement.text().indexOf($searchString) >= 0) {
+    //             console.log($searchListElement);
+    //             $searchListElement = $searchListElement.next();
+    //         };
+    //     }
+    // });
+
+    // - - - - - - - - - - - - - - - - - - - - 
+    // execute when page is loaded
+
+    // $(function () {        
+    // })
+
+    // - - - - - - - - - - - - - - - - - - - - 
+    // EVENTS
+
+    // $(".content").on("mouseenter", function () {
+    //     $(this).css("background-color", "red");
+    // });
+
+    // $(".content").on("mouseleave", function () {
+    //     $(this).css("background-color", "");
+    // })
+
+    // $("input").on("input", function () {
+    //     $this = $(this);
+    //     $(".input-result").html($this.val());
+    // })
+
+    // - - - - - - - - - - - - - - - - - - - - 
+    // Text & html
+    // console.log($("body").text());
+    // console.log("- - - - - - - - - - - - - - - - - - - - ");
+    // console.log($("body").html());
+
+    // - - - - - - - - - - - - - - - - - - - - 
+    // SET STYLES
+
+    // $(".button").css("background-color", "black"); // setter 
+    // console.log($(".button").css("background-color")); // getter
+
+    // - - - - - - - - - - - - - - - - - - - -     
+    // Show & hide
+    // some getter and setter sidenotes
+
+    // $(".button").on('click', function () {
+    //     $this = $(this);
+    //     $(".content").toggleClass("hidden");
+    //     if($this.html() === "Hide"){
+    //         $this.html("Show");
+    //     } else {
+    //         $this.html("Hide");
+    //     }
+    // })
+
+    // converting from vanilla to jQUery
+    // var content = document.getElementsByClassName('list-item');
+    // var $content = $(content);
+
+    // console.log($content);
+
+    // - - - - - - - - - - - - - - - - - - - - 
+    // REMOVE
+    // $(".btn").on('click', function () {
+    //     $(this).parents(".list-item").remove();
+    // })
+
+    // - - - - - - - - - - - - - - - - - - - - 
+    // REMOVE
+    // remove all $(".list .list-item").remove();
+
+    // $(".btn").on('click', function () {
+    //     $(this).remove();
+    // })
+
+    // - - - - - - - - - - - - - - - - - - - - 
+    // append appendTo
+
+    // $h1 = $("<h4/>")
+    //     .html("it works");
+    // $listElement = $("<li/>");
+    // $list = $(".list");
+
+    // $h1.appendTo($listElement);
+    // $listElement.appendTo($list);
+
+    // - - - - - - - - - - - - - - - - - - - - 
+    // selecting
+
+    // var $buttons = $(".list .list-item .btn");
+    // console.log($buttons);
+    // $buttons.find('a') finds all a in buttons
+    // for better performance 
+
+    // // selecting parent
+    // var $bun = $(".list-item .btn").first();
+    // console.log($bun.parents("ul"));
+
+    // - - - - - - - - - - - - - - - - - - - - 
+    // parent & parents
+
+    // $elements = $("li");
+    // console.log($elements);
+    // console.log($elements.parent());
+    // console.log($elements.parents());
+    // console.log($elements.parents("body"));
+
+    // - - - - - - - - - - - - - - - - - - - - 
+    // first & last    
+
+    // $elements = $("li");
+    // console.log($elements);
+    // console.log($elements.last());
+
+    // - - - - - - - - - - - - - - - - - - - - 
+    // toggle
+
+    // $(".btn").on('click', function () {
+    //     var $this = $(this);
+    //     var $node = $this.next();
+    //     var counter = 0;
+
+    //     while ($node.length) {
+    //         $node.toggleClass("hidden");
+
+    //         //same as toggle
+    //         // if ($node.hasClass("hidden")) {
+    //         //     $node.removeClass("hidden");
+    //         // } else {
+    //         //     $node.addClass("hidden");
+    //         // }
+
+    //         $node = $node.next();
+    //     }
+    // })
+
+    // - - - - - - - - - - - - - - - - - - - - 
+    // selecting and adding an event
+
+    // $(".btn").on('click', function () {
+    //     var $heading = $("h1");
+    //     if ($heading.hasClass("hidden")) {
+    //         $heading.removeClass("hidden");
+    //     } else {
+    //         $heading.addClass("hidden");
+    //     }
+    // });
+
+</script>
+
+</html>

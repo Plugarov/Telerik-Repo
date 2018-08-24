@@ -1,0 +1,7 @@
+ul.nav.nav-tabs > li.active {
+    color: red;
+}
+
+#container-thraeds {
+  background-color: red;
+}

@@ -1,0 +1,71 @@
+ul.nav.nav-tabs > li.active {
+    color: red;
+}
+
+#container-thraeds {
+  background-color: red;
+}
+
+td {
+  font-size: 15px;
+}
+
+.login-notify-message {
+  margin-top: 20px;
+}
+
+.message-container {
+  margin-bottom: 25px;
+  margin-top: 25px;
+  border-bottom: 1px solid #eff3f9;
+}
+
+#footer-container-template {
+  margin-top: 25px;
+  border-top: 1px solid #E8E8E8;
+  background-color: #F5F5F5;
+}
+
+.footer-container{
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.footer-container ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.footer-container li {
+  margin-bottom: 15px;
+  border-left: 3px solid lightgrey;
+  padding-left: 10px;
+}
+
+.box-middle p{
+  width: 80%;
+}
+
+#register-form,
+#login-form {
+    width: 50%;
+    margin: 0 auto 30px;
+    padding: 25px;
+    background-color: #fefefe;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+#register-form-template h1,
+#login-form-template h1 {
+    margin: 0 auto;
+    padding: 25px;
+    width: 50%;
+}
+
+#threads-container-template h3 {
+  margin: 30px 0px 30px 0px;
+}
+#threads-container-template li {
+  font-size: 20px;
+  margin: 10px
+}

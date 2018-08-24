@@ -1,0 +1,37 @@
+<div id="threads-container-template" type="text/template">
+  <div class="container">
+    <div class="row threads-container">
+      <div class="col-md-12 threads-content">
+        <h1>Simple Forum</h1>
+
+        <!-- Table starts here -->
+        <table id="table" class="table table-hover table-mc-light-blue">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>User</th>
+              <th>Post date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#if result}} {{#each result}}
+            <tr>
+              <td id="topic-name" class="col-md-7" data-title="topic-name">
+                <a href="#threads/{{id}}">{{title}}</a>
+              </td>
+              <td class="col-md-2" data-title="author">
+                <a href="" target="_blank">{{user.username}}</a>
+              </td>
+              <td class="col-md-3" data-title="post-date">{{postDate}}</td>
+            </tr>
+            {{/each}} {{else}}
+            <p> No topics yet
+              <p>
+                {{/if}}
+          </tbody>
+        </table>
+        <button id="thread-add-new" type="button" class="btn btn-primary btn-sm">Add topic</button>
+      </div>
+    </div>
+  </div>
+</div>

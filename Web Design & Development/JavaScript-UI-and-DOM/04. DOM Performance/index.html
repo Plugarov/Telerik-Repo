@@ -1,0 +1,44 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+    <!-- Creating elements -->
+
+    <!-- Creating elements -->
+
+    <!-- Creating elements -->
+
+    <!-- Events elements -->
+
+    <div id="root">
+
+    </div>
+
+    <script>
+
+        // jQuery works with collections, can`t access indexies like collection[0], you can use first, last, next.
+
+        
+
+        // Clone node
+        var root = document.getElementById('root');
+        var paragraph = document.createElement('p');
+        paragraph.innerText = 'Click';
+
+        paragraph.addEventListener('click', function () {
+            alert('Hello');
+        });
+
+        // Works
+        root.appendChild(paragraph);
+
+        // Won`t work, node does`t clone events.
+        root.appendChild(paragraph.cloneNode(true));
+    </script>
+</body>
+
+</html>

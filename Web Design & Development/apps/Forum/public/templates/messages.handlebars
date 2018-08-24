@@ -1,0 +1,76 @@
+<div id="messages-container-template" type="text/template">
+    <div class="container-messages col-xs-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+<<<<<<< HEAD
+                    Messages for {{result.title}}
+=======
+                    Messages for
+>>>>>>> e6625f2bb98f445568025b0d45f48912a6baa280
+                    <strong class="thread-title"></strong>
+                    <button class="btn-close-msg btn btn-danger btn-xs pull-right glyphicon glyphicon-remove" title="close"></button>
+                    <button class="btn-collapse-msg btn btn-xs pull-right glyphicon glyphicon-chevron-up" title="collapse"></button>
+                </h3>
+            </div>
+
+<<<<<<< HEAD
+            {{#if result.messages}}
+              {{#each result.messages}}
+              <div class="messages panel-body">
+                  <div class="message">
+                      <div>
+                          <p class="message-content">{{title}}</p>
+                          <p>
+                              <span>Created on </span>
+                              <span class="message-date">{{postDate}}</span>
+                              by
+                              <a class="message-creator" href="#">{{#if user.username}}{{user.username}}{{else}}Anonymous{{/if}}</a>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+              {{/each}}
+            {{else}}
+              <div class="messages panel-body">
+                  <div class="message">
+                      <div>
+                          <p class="message-content">No messages!</p>
+                      </div>
+                  </div>
+              </div>
+            {{/if}}
+=======
+            {{#each result.messages}}
+            <div class="messages panel-body">
+                <div class="message">
+                    <div>
+                        <p class="message-content">{{content}}</p>
+                        <p>
+                            <span>Created on </span>
+                            <span class="message-date"></span>
+                            by
+                            <a class="message-creator" href="#"></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+>>>>>>> e6625f2bb98f445568025b0d45f48912a6baa280
+        </div>
+        <div id="message-new-template" type="text/template">
+            <form class="" role="search">
+                <div class="input-group">
+                    <input class="input-add-message message-content form-control" placeholder="Add new message..." />
+                    <span class="input-group-btn">
+                        <button class="btn-add-message btn btn-success " type="submit">Add</button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+<<<<<<< HEAD
+</div>
+=======
+</div>
+>>>>>>> e6625f2bb98f445568025b0d45f48912a6baa280

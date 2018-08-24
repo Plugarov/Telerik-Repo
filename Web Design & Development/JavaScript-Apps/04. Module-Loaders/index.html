@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SystemJs</title>
+</head>
+
+<body>
+    <input type="text" id="person-name">
+    <input type="number" id="person-age">
+    <button id="btn-add">Add</button>
+    <button id="btn-all">All</button>
+    <ul id="list">
+
+    </ul>
+    <script src=" /node_modules/systemjs/dist/system.js "></script>
+    <script>
+        SystemJS.config({
+            'transpiler': 'plugin-babel',
+            map: {
+                'plugin-babel':
+                '/node_modules/systemjs-plugin-babel/plugin-babel.js',
+                'systemjs-babel-build':
+                '/node_modules/systemjs-plugin-babel/systemjs-babel-browser.js',
+                // app start script
+                'main': 'app-modules/main.js',
+                'data': 'app-modules/data.js',
+                'utils': 'app-modules/utils.js',
+                'jquery': '../node_modules/jquery/dist/jquery.js',
+                'data-provider' : 'app-modules/seed.js',
+                'person-component' : 'app-modules/person-component.js'
+            }
+        })
+
+        System.import('main');
+    </script>
+
+
+    <!-- 
+        npm install systemjs --save
+        npm  install systemjs-plugin -babel --save
+        yarn init
+        yarn add jquery 
+        npm init
+
+        systemJS handles promises
+
+        himework check AMD
+    -->
+</body>
+
+</html>
